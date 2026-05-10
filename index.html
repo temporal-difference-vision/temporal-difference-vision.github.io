@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>You Don't Need Strong Assumptions: Visual Representation Learning via Temporal Differences</title>
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="⏳">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -97,51 +97,15 @@
                             </span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-
-<!-- TL;DR -->
-<section class="section hero is-light">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-                <!-- <h2 class="title is-3">TL;DR</h2> -->
-                <div class="content has-text-justified">
-                    <p>
-                        We introduce <b>Temporal Difference in Vision (TDV)</b>, a self-supervised learning
-                        approach that trains purely from video using a single causal assumption: the past
-                        causes the future. By enforcing that a frame's representation plus an encoded motion
-                        signal equals the next frame's representation, TDV avoids the strong inductive biases
-                        (augmentations, masking, cropping) relied on by prior SSL methods — and matches or
-                        surpasses their performance on dense spatial tasks.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End TL;DR -->
-
-<!-- Intuition -->
-<section class="hero teaser">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <h2 class="title is-3 has-text-centered">Intuition</h2>
-            <img class="figure-img" src="static/images/tdv_intuition.png" alt="TDV Intuition: frame encoder maps current frame to z_t, motion encoder maps RGB difference to delta z_t, enforcing z_t + delta z_t = z_{t+1}"/>
-            <div class="columns is-centered">
-                <div class="column is-four-fifths">
-                    <div class="content has-text-justified figure-caption">
+                    <div class="tldr-block">
                         <p>
-                            The frame encoder maps the current frame to its latent embedding, while the
-                            motion encoder maps the RGB difference to a latent delta, enforcing
-                            the causal principle that the current representation plus the motion delta equals the next frame's representation.
-                            Since consecutive frames are temporally close, the RGB difference captures primarily edges
-                            and moving regions, encouraging the motion encoder to learn compact representations of
-                            spatial change rather than full scene appearance.
+                            <b>TL;DR - </b> We introduce <b>Temporal Difference in Vision (TDV)</b>, a self-supervised learning
+                            approach that trains purely from video using a single causal assumption: the past
+                            causes the future. By enforcing that a frame's representation plus an encoded motion
+                            signal equals the next frame's representation, TDV avoids the strong inductive biases
+                            (augmentations, masking, cropping) relied on by prior SSL methods — and matches or
+                            surpasses their performance on dense spatial tasks.
                         </p>
                     </div>
                 </div>
@@ -149,7 +113,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Abstract -->
 <section class="section hero teaser is-light">
@@ -192,11 +155,36 @@
 <!-- End abstract -->
 
 
-<!-- Architecture -->
+<!-- Intuition -->
 <section class="hero teaser">
     <div class="container is-max-desktop">
-        <div class="hero-body">
-            <h2 class="title is-3 has-text-centered">Architecture</h2>
+        <div class="hero-body has-text-centered">
+            <h2 class="title is-3">Intuition</h2>
+            <img class="figure-img" src="static/images/tdv_intuition.png" alt="TDV Intuition: frame encoder maps current frame to z_t, motion encoder maps RGB difference to delta z_t, enforcing z_t + delta z_t = z_{t+1}"/>
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified figure-caption">
+                        <p>
+                            The frame encoder maps the current frame to its latent embedding, while the
+                            motion encoder maps the RGB difference to a latent delta, enforcing
+                            the causal principle that the current representation plus the motion delta equals the next frame's representation.
+                            Since consecutive frames are temporally close, the RGB difference captures primarily edges
+                            and moving regions, encouraging the motion encoder to learn compact representations of
+                            spatial change rather than full scene appearance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Architecture -->
+<section class="hero teaser is-light">
+    <div class="container is-max-desktop">
+        <div class="hero-body has-text-centered">
+            <h2 class="title is-3">Architecture</h2>
             <img class="figure-img" src="static/images/tdv_full_architecture.png" alt="TDV full architecture diagram"/>
             <div class="columns is-centered">
                 <div class="column is-four-fifths">
