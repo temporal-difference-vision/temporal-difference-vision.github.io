@@ -129,7 +129,7 @@ b, strong {
   background-image: url('../images/hero_bg.svg');
   background-size: cover;
   background-position: center;
-  opacity: 0.18;   /* ← change this: 0 = invisible, 1 = full */
+  opacity: 0.12;   /* ← change this: 0 = invisible, 1 = full */
   z-index: 0;
 }
 
@@ -139,8 +139,8 @@ b, strong {
 }
 .publication-title {
   font-family: 'Google Sans', sans-serif;
-  font-size: 2.4rem !important;
-  font-weight: 500;
+  font-size: 2.6rem !important;
+  font-weight: 700;
 }
 
 .publication-authors {
