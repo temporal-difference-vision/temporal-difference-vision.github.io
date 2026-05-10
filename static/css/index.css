@@ -191,41 +191,79 @@ sub { bottom: -0.25em; }
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-  /* Global font scale-down */
+@media screen and (max-width: 1024px) {
+  /* Tablet / iPad scale-down */
   * {
     font-size: 1rem;
   }
 
-  /* Hero title */
   .publication-title {
-    font-size: 1.6rem !important;
-    line-height: 1.25;
+    font-size: 2rem !important;
+    line-height: 1.2;
   }
 
-  /* Section headings (Abstract, Architecture, etc.) */
   .title.is-3 {
-    font-size: 1.25rem !important;
+    font-size: 1.15rem !important;
   }
 
-  .title.is-1 {
-    font-size: 1.6rem !important;
-  }
-
-  /* Authors & affiliations */
   .publication-authors,
   .is-size-5.publication-authors {
     font-size: 0.9rem !important;
   }
 
-  /* Reading sections */
   .content p, .content p b {
     font-size: 0.95rem !important;
   }
 
+  .tldr-block p {
+    font-size: 0.95rem !important;
+  }
+
+  .figure-caption p {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Phone scale-down */
+  * {
+    font-size: 0.9rem;
+  }
+
+  /* Hero title */
+  .publication-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25;
+  }
+
+  /* Section headings (Abstract, Architecture, etc.) */
+  .title.is-3 {
+    font-size: 1rem !important;
+  }
+
+  .title.is-1 {
+    font-size: 1.35rem !important;
+  }
+
+  /* Authors & affiliations */
+  .publication-authors,
+  .is-size-5.publication-authors {
+    font-size: 0.8rem !important;
+  }
+
+  /* Reading sections */
+  .content p, .content p b {
+    font-size: 0.85rem !important;
+  }
+
+  /* TL;DR */
+  .tldr-block p {
+    font-size: 0.85rem !important;
+  }
+
   /* Captions / subtitles */
   .subtitle {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
     line-height: 1.35;
     padding: 0 0.5rem;
     margin-top: 0.5rem !important;
