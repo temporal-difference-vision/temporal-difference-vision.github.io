@@ -8,6 +8,19 @@
 
 body {
   font-family: 'Noto Sans', sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 0.95rem !important;
+  line-height: 1.25;
+  text-align: justify;
+  padding: 0 1.5rem;
+  margin-top: 0.75rem !important;
 }
 
 .dnerf {
@@ -17,10 +30,11 @@ body {
 /* ============================================================
    Reading sections (Abstract, TL;DR) — swap family to change font
    ============================================================ */
-.content p, .content p b, .subtitle{
+.content p, .content p b, .subtitle, p.content {
   /* serif options */
   font-family: 'Lora', serif !important;
   font-size: 1.05rem !important;
+  line-height: 1.75 !important;
   /* font-family: 'Source Serif 4', serif !important; */
   /* font-family: 'Crimson Pro', serif !important; */
 
@@ -31,18 +45,48 @@ body {
   /* font-family: 'Figtree', sans-serif !important; */
 }
 
+/* Subtitles are captions — slightly smaller than body text */
 .subtitle {
-  font-size: 1rem !important;
+  font-family: 'Lora', serif !important;
+  font-size: 0.95rem !important;
+}
+
+/* Figure images and captions in Intuition / Architecture sections */
+.figure-img {
+  display: block;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0 !important;
+}
+
+.figure-caption p {
+  font-size: 0.85rem !important;
+  font-family: 'Google Sans', sans-serif !important;
+  line-height: 1.6 !important;
+  color: #999;
+  margin-top: 1.5rem !important;
 }
 
 /* ============================================================
    Hero — title, authors, links
    ============================================================ */
 #hero-header {
+  position: relative;
+}
+
+#hero-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background-image: url('../images/hero_bg.svg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  opacity: 0.4;   /* ← change this: 0 = invisible, 1 = full */
+  z-index: 0;
+}
+
+#hero-header .hero-body {
+  position: relative;
+  z-index: 1;
 }
 .publication-title {
   font-family: 'Google Sans', sans-serif;
@@ -77,9 +121,14 @@ body {
   font-size: smaller;
 }
 
-sup {
-  font-size: 0.8rem;
+sub, sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
 
 .link-block a {
   margin-top: 5px;
@@ -106,8 +155,119 @@ sup {
 }
 
 @media screen and (max-width: 768px) {
+  /* Global font scale-down */
+  * {
+    font-size: 1rem;
+  }
+
+  /* Hero title */
+  .publication-title {
+    font-size: 1.6rem !important;
+    line-height: 1.25;
+  }
+
+  /* Section headings (Abstract, Architecture, etc.) */
+  .title.is-3 {
+    font-size: 1.25rem !important;
+  }
+
+  .title.is-1 {
+    font-size: 1.6rem !important;
+  }
+
+  /* Authors & affiliations */
+  .publication-authors,
+  .is-size-5.publication-authors {
+    font-size: 0.9rem !important;
+  }
+
+  /* Reading sections */
+  .content p, .content p b {
+    font-size: 0.95rem !important;
+  }
+
+  /* Captions / subtitles */
+  .subtitle {
+    font-size: 0.75rem !important;
+    line-height: 1.35;
+    padding: 0 0.5rem;
+    margin-top: 0.5rem !important;
+  }
+
+  /* Section & container padding */
+  .hero-body {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Columns — remove negative margins Bulma adds on mobile */
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Title block top breathing room */
+  #hero-header .hero-body {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Abstract / TL;DR column */
+  .column.is-four-fifths {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Images full width */
   .hero-body img {
     max-width: 100%;
+  }
+
+  /* Architecture / teaser section extra top space */
+  .hero.teaser .hero-body {
+    padding-top: 2rem;
+  }
+
+  /* BibTeX pre block doesn't overflow */
+  pre {
+    overflow-x: auto;
+    font-size: 0.8rem !important;
+    padding: 1rem !important;
+  }
+
+  /* Carousel margins */
+  .results-carousel .item {
+    margin: 20px 10px;
+  }
+
+  /* Buttons wrap neatly */
+  .publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .link-block {
+    margin: 0;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 1.25rem;
   }
 }
 

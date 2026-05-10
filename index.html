@@ -54,11 +54,11 @@
                     <h1 class="title is-1 publication-title">You Don't Need Strong Assumptions: <br/> Visual Representation Learning via Temporal Differences</h1>
                     <div class="is-size-8 publication-authors">
                         <span class="author-block">
-                            <a href="#" target="_blank">Ninad Daithankar</a><sup>*1</sup>,</span>
+                            <a href="https://ninaddaithankar.github.io/" target="_blank">Ninad Daithankar</a><sup>*1</sup>,</span>
                         <span class="author-block">
-                            <a href="#" target="_blank">Alexi Gladstone</a><sup>*1</sup>,</span>
+                            <a href="https://alexiglad.github.io/" target="_blank">Alexi Gladstone</a><sup>*1</sup>,</span>
                         <span class="author-block">
-                            <a href="https://yann.lecun.com" target="_blank">Yann LeCun</a><sup>2</sup>,</span>
+                            <a href="http://yann.lecun.com/" target="_blank">Yann LeCun</a><sup>2</sup>,</span>
                         <span class="author-block">
                             <a href="https://blender.cs.illinois.edu/hengji.html" target="_blank">Heng Ji</a><sup>1</sup>
                         </span>
@@ -126,28 +126,33 @@
 </section>
 <!-- End TL;DR -->
 
-
-<!-- Teaser figure -->
+<!-- Intuition -->
 <section class="hero teaser">
     <div class="container is-max-desktop">
         <div class="hero-body">
-            <img src="static/images/tdv_intuition.png" alt="TDV Intuition: frame encoder maps current frame to z_t, motion encoder maps RGB difference to delta z_t, enforcing z_t + delta z_t = z_{t+1}"/>
-            <h6 class="subtitle has-text-centered">
-                The frame encoder maps the current frame to its latent embedding <i>z<sub>t</sub></i>, while the
-                motion encoder maps the RGB difference to a latent delta &Delta;<i>z<sub>t</sub></i>, enforcing
-                the causal principle that <i>z<sub>t</sub></i> + &Delta;<i>z<sub>t</sub></i> = <i>z<sub>t+1</sub></i>.
-                Since consecutive frames are temporally close, the RGB difference captures primarily edges
-                and moving regions, encouraging the motion encoder to learn compact representations of
-                spatial change rather than full scene appearance.
-            </h6>
+            <h2 class="title is-3 has-text-centered">Intuition</h2>
+            <img class="figure-img" src="static/images/tdv_intuition.png" alt="TDV Intuition: frame encoder maps current frame to z_t, motion encoder maps RGB difference to delta z_t, enforcing z_t + delta z_t = z_{t+1}"/>
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified figure-caption">
+                        <p>
+                            The frame encoder maps the current frame to its latent embedding, while the
+                            motion encoder maps the RGB difference to a latent delta, enforcing
+                            the causal principle that the current representation plus the motion delta equals the next frame's representation.
+                            Since consecutive frames are temporally close, the RGB difference captures primarily edges
+                            and moving regions, encouraging the motion encoder to learn compact representations of
+                            spatial change rather than full scene appearance.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<!-- End teaser figure -->
 
 
 <!-- Abstract -->
-<section class="section hero is-light">
+<section class="section hero teaser is-light">
     <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
@@ -192,15 +197,21 @@
     <div class="container is-max-desktop">
         <div class="hero-body">
             <h2 class="title is-3 has-text-centered">Architecture</h2>
-            <img src="static/images/tdv_full_architecture.png" alt="TDV full architecture diagram"/>
-            <h2 class="subtitle has-text-centered">
-                The frame encoder produces a representation <i>z<sub>t</sub></i> of the current frame, while
-                the motion encoder predicts how that representation should change by encoding the RGB difference
-                &Delta;<i>x<sub>t</sub></i>, conditioned on <i>z<sub>t</sub></i> via cross-attention. Adding
-                these together yields <i>z&#771;<sub>t+1</sub></i>, supervised against a teacher EMA frame
-                encoder's embedding of <i>x<sub>t+1</sub></i> via MSE. A DINO-style categorical cross-entropy
-                loss ensures representations remain discriminative and do not collapse.
-            </h2>
+            <img class="figure-img" src="static/images/tdv_full_architecture.png" alt="TDV full architecture diagram"/>
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified figure-caption">
+                        <p>
+                            The frame encoder produces a representation of the current frame, while
+                            the motion encoder predicts how that representation should change by encoding the RGB difference,
+                            conditioned on the current frame's representation via cross-attention. Adding
+                            these together yields a predicted next-frame representation, supervised against a teacher EMA frame
+                            encoder's embedding of the next frame via MSE. A DINO-style categorical cross-entropy
+                            loss ensures representations remain discriminative and do not collapse.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
