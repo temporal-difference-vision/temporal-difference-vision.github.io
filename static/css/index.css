@@ -325,8 +325,6 @@ sub { bottom: -0.25em; }
 /* ============================================================
    Publication video embed (16:9 responsive iframe)
    ============================================================ */
-.publication-banner img {
-}
 
 .publication-video {
   position: relative;

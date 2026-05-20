@@ -73,7 +73,7 @@
                     <div class="column has-text-centered">
                         <div class="publication-links">
                             <span class="link-block">
-                                <a href="https://arxiv.org/pdf/ARXIV_ID.pdf" target="_blank"
+                                <a href="static/pdfs/tdv-arxiv.pdf" target="_blank"
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                                     <span>Paper</span>
@@ -129,15 +129,11 @@
                         characteristic in the field of Visual Representation Learning, where approaches have
                         gone from being dominated by Supervised Learning, to Weakly Supervised Learning, to
                         the eventual widespread success of Self-Supervised Learning without human labels.
-                    </p>
-                    <p>
                         Yet even modern Self-Supervised Learning approaches still depend on strong inductive
                         biases such as augmentations, masking, cropping, or raw data reconstruction. Notably,
                         we show empirically that the optimal strength of these inductive biases decreases as
                         data scale grows &mdash; motivating the search for approaches that rely on as few
                         assumptions as possible.
-                    </p>
-                    <p>
                         To push this frontier further, we introduce <b>Temporal Difference in Vision</b> (<b>TDV</b>),
                         a new approach for self-supervised learning from video that avoids the reliance on
                         existing inductive biases, relying instead on the causal assumption that the past
@@ -280,15 +276,28 @@
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
         <h2 class="title is-3">BibTeX</h2>
-        <pre><code>@inproceedings{daithankar2026tdv,
+        <div style="position: relative;">
+            <button id="copy-bibtex" onclick="copyBibtex()" style="position: absolute; top: 8px; right: 8px; z-index: 1; background: #4a4a4a; color: #fff; border: none; border-radius: 4px; padding: 4px 12px; cursor: pointer; font-size: 0.85rem;">Copy</button>
+            <pre id="bibtex-block"><code>@inproceedings{daithankar2026tdv,
   title={You Don't Need Strong Assumptions: Visual Representation Learning via Temporal Differences},
   author={Daithankar, Ninad and Gladstone, Alexi and LeCun, Yann and Ji, Heng},
   booktitle={Advances in Neural Information Processing Systems},
   year={2026},
   url={https://temporal-difference-vision.github.io}
 }</code></pre>
+        </div>
     </div>
 </section>
+<script>
+function copyBibtex() {
+    var text = document.querySelector('#bibtex-block code').innerText;
+    navigator.clipboard.writeText(text).then(function() {
+        var btn = document.getElementById('copy-bibtex');
+        btn.innerText = 'Copied!';
+        setTimeout(function() { btn.innerText = 'Copy'; }, 2000);
+    });
+}
+</script>
 <!-- End BibTeX -->
 
 
