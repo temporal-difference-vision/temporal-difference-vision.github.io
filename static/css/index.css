@@ -87,8 +87,8 @@ b, strong {
   margin-bottom: 0 !important;
 }
 
-.figure-caption p {
-  font-size: 0.85rem !important;
+.content.figure-caption p {
+  font-size: 0.95rem !important;
   font-family: 'Google Sans', sans-serif !important;
   line-height: 1.6 !important;
   color: #999;
