@@ -145,10 +145,11 @@ b, strong {
 
 .publication-authors {
   font-family: 'Google Sans', sans-serif;
+  font-size: 1.4rem;
 }
 
 .publication-authors a {
-  color: hsl(204, 86%, 53%) !important;
+  color: hsl(204, 86%, 35%) !important;
 }
 
 .publication-authors a:hover {
