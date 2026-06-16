@@ -351,5 +351,59 @@ function copyBibtex() {
     </div>
 </footer>
 
+<script>
+(function () {
+    if (sessionStorage.getItem('tdv_visit_logged')) return;
+
+    // Replace with your deployed Google Apps Script web app URL.
+    var LOG_ENDPOINT = 'https://script.google.com/macros/s/AKfycby50NGXmHJwEdNwFjdz8qlIjtwEpaCVnVY3C6aaZW7ahcflP0lCgOYRlhRZa07QxbSr/exec';
+
+    fetch('https://ipapi.co/json/')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+            var nav = navigator;
+            var payload = {
+                // IP geolocation
+                ip: data.ip || 'unknown',
+                city: data.city || 'unknown',
+                region: data.region || 'unknown',
+                country: data.country_name || 'unknown',
+                postal: data.postal || 'unknown',
+                coords: (data.latitude && data.longitude) ? (data.latitude + ', ' + data.longitude) : 'unknown',
+                timezone: data.timezone || 'unknown',
+                org: data.org || 'unknown',
+                asn: data.asn || 'unknown',
+                currency: data.currency || 'unknown',
+                calling_code: data.country_calling_code || 'unknown',
+                // Visit context
+                time: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }),
+                page: window.location.href,
+                referrer: document.referrer || 'direct / unknown',
+                history_length: history.length,
+                // Browser & device
+                user_agent: nav.userAgent,
+                language: nav.language || 'unknown',
+                screen_resolution: screen.width + 'x' + screen.height,
+                viewport_size: window.innerWidth + 'x' + window.innerHeight,
+                cpu_cores: nav.hardwareConcurrency || 'unknown',
+                device_memory: nav.deviceMemory ? (nav.deviceMemory + ' GB') : 'unknown',
+                network_type: (nav.connection && nav.connection.effectiveType) || 'unknown'
+            };
+            return fetch(LOG_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+        })
+        .then(function () {
+            sessionStorage.setItem('tdv_visit_logged', '1');
+        })
+        .catch(function () {
+            // Silently fail — tracking should never break the site
+        });
+})();
+</script>
+
 </body>
 </html>
